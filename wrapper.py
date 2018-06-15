@@ -43,7 +43,7 @@ class Neon2(RodanTask):
     def get_my_interface(self, inputs, settings):
         t = 'templates/neon_square_prod.html'
         c = {
-            'meifile': inputs['MEI'][0]['resource_url']
+            'meifile': inputs['MEI'][0]['resource_url'],
             'bgimg': inputs['Background Image'][0]['resource_url']
         }
         return (t, c)
