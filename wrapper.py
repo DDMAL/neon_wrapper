@@ -40,13 +40,17 @@ class Neon2(RodanTask):
         outfile.close()
         return True
 
-'''
     def get_my_interface(self, inputs, settings):
-        pass
+        t = 'templates/neon_square_prod.html'
+        c = {
+            'meifile': inputs['MEI'][0]['resource_url']
+            'bgimg': inputs['Background Image'][0]['resource_url']
+        }
+        return (t, c)
 
     def validate_my_user_input(self, inputs, settings, user_input):
         pass
 
     def my_error_information(self, exc, traceback):
         pass
-'''
+
