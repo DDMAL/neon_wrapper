@@ -9,21 +9,34 @@ class Neon2(RodanTask):
     category = 'Pitch Correction'
     interactive = False # Change to True when we have interactive part to task
     
-    input_port_types = ()
+    input_port_types = (
+            {
+                'name': 'OMR MEI',
+                'minimum': 1,
+                'maximum': 1,
+                'resource_types': ['application/mei+xml']
+            },
+            {
+                'name': 'Background',
+                'minimum': 1,
+                'maximum': 1,
+                'resource_types': ['image/rgba+png']
+            },
+        )
 
     output_port_types = (
             {
-                'name': 'Test',
+                'name': 'Corrected MEI',
                 'minimum': 1,
                 'maximum': 1,
-                'resource_types': ['text/plain']
+                'resource_types': ['application/mei+xml']
             },
         )
 
     def run_my_task(self, inputs, settings, outputs):
-        outfile_path = outputs['Test'][0]['resource_path']
+        outfile_path = outputs['Corrected MEI'][0]['resource_path']
         outfile = open(outfile_path, 'w')
-        outfile.write("This isn't Neon. Oops.")
+        outfile.write("<mei></mei>")
         outfile.close()
         return True
 
