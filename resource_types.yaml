@@ -1,0 +1,11 @@
+- mimetype: text/plain
+  description: Plain text
+  extension: txt
+
+- mimetype: image/rgba+png
+  description: RGB PNG with Alpha
+  extension: png
+
+- mimetype: application/mei+xml
+  description: Music Encoding Initiative
+  extension: mei
