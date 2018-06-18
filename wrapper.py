@@ -2,14 +2,14 @@ from rodan.jobs.base import RodanTask
 
 class Neon2(RodanTask):
     name = 'Neon2'
-    author = ''
+    author = 'Juliette Regimbal & Zoe McLennan'
     description = 'Neon Editor Online'
     settings = {}
     enabled = True
     category = 'Pitch Correction'
     interactive = False # Change to True when we have interactive part to task
     
-    input_port_types = (
+    input_port_types = [
             {
                 'name': 'OMR MEI',
                 'minimum': 1,
@@ -22,34 +22,35 @@ class Neon2(RodanTask):
                 'maximum': 1,
                 'resource_types': ['image/rgba+png']
             },
-        )
-
-    output_port_types = (
+    ]
+    output_port_types = [
             {
-                'name': 'Corrected MEI',
-                'minimum': 1,
+                'name': 'Test',
+                'minimum': 1, 
                 'maximum': 1,
                 'resource_types': ['application/mei+xml']
             },
-        )
+    ]
+
+    def get_my_interface(self, inputs, settings):
+        t = 'Neon2/views/editor.html'
+        c = {
+            'meifile': inputs['OMR MEI'][0]['resource_url'],
+            'bgimg': inputs['Background'][0]['resource_url']
+        }
+        return (t, c)
 
     def run_my_task(self, inputs, settings, outputs):
-        outfile_path = outputs['Corrected MEI'][0]['resource_path']
+        if '@done' not in settings:
+            return self.WAITING_FOR_INPUT()
+        outfile_path = outputs['Test'][0]['resource_path']
         outfile = open(outfile_path, 'w')
         outfile.write("<mei></mei>")
         outfile.close()
         return True
 
-    def get_my_interface(self, inputs, settings):
-        t = 'templates/neon_square_prod.html'
-        c = {
-            'meifile': inputs['MEI'][0]['resource_url'],
-            'bgimg': inputs['Background Image'][0]['resource_url']
-        }
-        return (t, c)
-
     def validate_my_user_input(self, inputs, settings, user_input):
-        pass
+        return { '@done': True, '@user_input': user_input['user_input'] }
 
     def my_error_information(self, exc, traceback):
         pass
