@@ -114,3 +114,6 @@ venv.bak/
 
 
 # End of https://www.gitignore.io/api/django,python
+
+.DS_Store
+node_modules

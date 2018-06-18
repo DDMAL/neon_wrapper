@@ -9,7 +9,7 @@ function Neon (params) {
     var pageHeight = 800;
 
     var vrvToolkit = new verovio.toolkit();
-    var mei = params.meifile;
+    var meifile = params.meifile;
     var bgimg = params.bgimg;
     var zoomhandler = new ZoomHandler(this);
     var infobox = new InfoBox(vrvToolkit);
@@ -24,7 +24,7 @@ function Neon (params) {
     };
     vrvToolkit.setOptions(vrvOptions);
     
-    $.get(mei, function(data) {
+    $.get(meifile, function(data) {
         loadData(data);
     });
 
@@ -43,6 +43,7 @@ function Neon (params) {
 
     // Loads data into toolkit and also loads the image & mei svg data
     function loadData (data) {
+        console.log(data);
         vrvToolkit.loadData(data);
         loadImage();
         loadPage();
