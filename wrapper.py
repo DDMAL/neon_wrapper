@@ -7,8 +7,8 @@ class Neon2(RodanTask):
     settings = {}
     enabled = True
     category = 'Pitch Correction'
-    interactive = False # Change to True when we have interactive part to task
-    
+    interactive = True
+
     input_port_types = [
             {
                 'name': 'OMR MEI',

@@ -17,8 +17,9 @@
   </head>
   <body>
     <div class="navbar is-light">
-      <div class="navbar-brand"><a href="../" class="navbar-item">
-        <p>Neon2</p></a></div>
+      <div class="navbar-brand">
+        <p class="navbar-item">Neon2</p>
+      </div>
     </div>
     <div class="columns">
       <div id="svg_output" style="overflow:hidden" class="column is-two-thirds box"></div>
@@ -37,9 +38,18 @@
             <label class="checkbox">Display Text:
               <input id="displayText" type="checkbox" class="checkbox"/>
             </label></a>
+            <button class="button is-fullwidth" id="finish-interactive">Finish</button>
         </div>
         <div id="neume_info"></div>
       </div>
+      <script type="text/javascript">
+        $(document).ready(function () {
+            $('#finish-interactive').click(function () {
+                $.ajax({url: '', type: 'POST', data: JSON.stringify({'user_input': 'test'}), contentType: 'application/json'});
+                window.close();
+            });
+        });
+      </script>
       <script type="text/javascript">
         var neon = new Neon({
           meifile: "{{ meifile }}",
