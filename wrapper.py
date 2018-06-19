@@ -33,7 +33,7 @@ class Neon2(RodanTask):
     ]
 
     def get_my_interface(self, inputs, settings):
-        t = 'Neon2/views/editor.html'
+        t = 'editor.html'
         c = {
             'meifile': inputs['OMR MEI'][0]['resource_url'],
             'bgimg': inputs['Background'][0]['resource_url']
