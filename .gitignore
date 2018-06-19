@@ -1,3 +1,7 @@
+# Instance only files not to commit
+static
+Neon2
+
 
 # Created by https://www.gitignore.io/api/django,python
 
