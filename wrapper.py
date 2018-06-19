@@ -45,7 +45,9 @@ class Neon2(RodanTask):
             return self.WAITING_FOR_INPUT()
         outfile_path = outputs['Test'][0]['resource_path']
         outfile = open(outfile_path, 'w')
-        outfile.write("<mei></mei>")
+        correctedMEI = settings['@user_input']
+        outfile.write(correctedMEI)
+        outfile.write("\n<!-- Corrected with Neon -->")
         outfile.close()
         return True
 
