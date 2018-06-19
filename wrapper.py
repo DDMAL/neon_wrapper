@@ -11,7 +11,7 @@ class Neon2(RodanTask):
 
     input_port_types = [
             {
-                'name': 'OMR MEI',
+                'name': 'OMR',
                 'minimum': 1,
                 'maximum': 1,
                 'resource_types': ['application/mei+xml']
@@ -25,7 +25,7 @@ class Neon2(RodanTask):
     ]
     output_port_types = [
             {
-                'name': 'Test',
+                'name': 'Corrected',
                 'minimum': 1, 
                 'maximum': 1,
                 'resource_types': ['application/mei+xml']
@@ -35,7 +35,7 @@ class Neon2(RodanTask):
     def get_my_interface(self, inputs, settings):
         t = 'editor.html'
         c = {
-            'meifile': inputs['OMR MEI'][0]['resource_url'],
+            'meifile': inputs['OMR'][0]['resource_url'],
             'bgimg': inputs['Background'][0]['resource_url']
         }
         return (t, c)
@@ -43,7 +43,7 @@ class Neon2(RodanTask):
     def run_my_task(self, inputs, settings, outputs):
         if '@done' not in settings:
             return self.WAITING_FOR_INPUT()
-        outfile_path = outputs['Test'][0]['resource_path']
+        outfile_path = outputs['Corrected'][0]['resource_path']
         outfile = open(outfile_path, 'w')
         correctedMEI = settings['@user_input']
         outfile.write(correctedMEI)
