@@ -3,10 +3,13 @@ const webpack = require("webpack");
 
 module.exports = {
     mode: "production",
-    entry: "./editor.js",
+    entry: {
+        editor: "./editor.js",
+        pretty: "./Neon2/src/pretty.js"
+    },
     output: {
         path: path.resolve(__dirname, "static"),
-        filename: "editor.js",
+        filename: "[name].js"
     },
     plugins: [
         new webpack.ProvidePlugin({
