@@ -16,3 +16,12 @@ git submodule update --remote
 from the root of `neon2-wrapper`.
 
 Replace all instances of `demojob` with `neon2-wrapper` in `jobs/settings.py` and `docker-compose.job-dev.yml`. For more information, refer to the setup for `rodan-docker`.
+
+# Building Neon2
+
+You need to use webpack to build Neon2. Ensure you have [Yarn](https://yarnpkg.com) installed first. Run
+```
+yarn install
+yarn build
+```
+before trying to access Neon2 in Rodan.
