@@ -2,12 +2,11 @@ const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
-    mode: "production",
-    entry: "./Neon2/src/Neon.js",
+    mode: "development",
+    entry: "./editor.js",
     output: {
         path: path.resolve(__dirname, "static"),
-        filename: "NeonBundle.js",
-        library: "NeonBundle"
+        filename: "editor.js",
     },
     plugins: [
         new webpack.ProvidePlugin({
@@ -17,5 +16,16 @@ module.exports = {
     ],
     node: {
         fs: 'empty'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
+        ]
     }
 };
