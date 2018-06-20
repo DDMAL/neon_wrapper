@@ -10,7 +10,6 @@ var neon = new Neon({
 
 $(document).ready(function () {
     $('#finish-interactive').click(function () {
-        $.ajax({url: '', type: 'POST', data: JSON.stringify({'user_input': neon.getMEI()}), contentType: 'application/json'});
-        window.close();
+        $.ajax({url: '', type: 'POST', data: JSON.stringify({'user_input': neon.getMEI()}), contentType: 'application/json', success: function () { window.close(); }});
     });
 });
