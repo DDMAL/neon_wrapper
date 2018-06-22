@@ -1,12 +1,12 @@
-import { Neon } from './Neon2/src/Neon.js';
+import NeonView from './Neon2/src/NeonView.js';
 
-var neon = new Neon({
+var view = new NeonView({
     meifile: meiFile,
     bgimg: bgImg,
 });
 
 $(document).ready(function () {
     $('#finish-interactive').click(function () {
-        $.ajax({url: '', type: 'POST', data: JSON.stringify({'user_input': neon.getMEI()}), contentType: 'application/json', success: function () { window.close(); }});
+        $.ajax({url: '', type: 'POST', data: JSON.stringify({'user_input': view.rodanGetMei()}), contentType: 'application/json', success: function () { window.close(); }});
     });
 });
