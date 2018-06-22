@@ -1,19 +1,21 @@
 <html>
   <head>
     <title>Neon2</title>
-    <script src="./pretty.js"></script>
+    <script src="/pretty.js"></script>
   </head>
   <body>
     <div class="navbar is-light">
-      <div class="navbar-brand">
-        <p class="navbar-item">Neon2</p>
-      </div>
+      <div class="navbar-brand"><a href="../" class="navbar-item">
+          <p>Neon2</p></a><a class="navbar-item">
+          <div id="dropdown_toggle">
+            <button id="edit_mode" class="button">Edit MEI</button>
+          </div></a></div>
     </div>
     <div class="columns">
       <div id="svg_output" style="overflow:hidden" class="column is-two-thirds box"></div>
       <div class="column is-one-third">
         <div class="panel">
-          <p class="panel-heading">Controls</p><a class="panel-block has-text-centered">
+          <p class="panel-heading">Display</p><a class="panel-block has-text-centered">
             <button id="reset-zoom" class="button">Zoom</button>
             <input id="zoomSlider" step="5" min="25" max="200" value="100" type="range" class="slider is-fullwidth"/>
             <output id="zoomOutput" for="zoomSlider">100</output></a><a class="panel-block has-text-centered">
@@ -26,16 +28,16 @@
             <label class="checkbox">Display Text:
               <input id="displayText" type="checkbox" class="checkbox"/>
             </label></a>
-            <button class="button is-fullwidth" id="finish-interactive">Finish</button>
+          <div id="edit_controls"></div>
         </div>
         <div id="neume_info"></div>
       </div>
       <script type="text/javascript">
         var meiFile = "{{ meifile }}";
         var bgImg = "{{ bgimg }}";
+        var meiPath = "{{ meipath }}";
       </script>
-      <script src="./editor.js">
-      </script>
+      <script src="/editor.js"></script>
     </div>
   </body>
 </html>

@@ -36,7 +36,8 @@ class Neon2(RodanTask):
         t = 'editor.html'
         c = {
             'meifile': inputs['OMR'][0]['resource_url'],
-            'bgimg': inputs['Background'][0]['resource_url']
+            'bgimg': inputs['Background'][0]['resource_url'],
+            'meipath': inputs['OMR'][0]['resource_url']
         }
         return (t, c)
 
