@@ -5,8 +5,16 @@
   </head>
   <body>
     <div class="navbar is-light">
-      <div class="navbar-brand">
+      <div class="navbar-start">
         <p class="navbar-item">Neon2</p>
+        <a class="navbar-item" id="dropdown_toggle">
+          <button class="button" id="edit_mode">Edit MEI</button>
+        </a>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/DDMAL/Neon2/wiki">
+          <p class="has-text-info">Help</p>
+        </a>
       </div>
     </div>
     <div class="columns">
@@ -15,7 +23,7 @@
         <div class="panel">
           <p class="panel-heading">Controls</p><a class="panel-block has-text-centered">
             <button id="reset-zoom" class="button">Zoom</button>
-            <input id="zoomSlider" step="5" min="25" max="200" value="100" type="range" class="slider is-fullwidth"/>
+            <input id="zoomSlider" step="5" min="25" max="400" value="100" type="range" class="slider is-fullwidth"/>
             <output id="zoomOutput" for="zoomSlider">100</output></a><a class="panel-block has-text-centered">
             <button id="reset-opacity" class="button">Neume Opacity</button>
             <input id="opacitySlider" step="5" min="0" max="100" value="100" type="range" class="slider is-fullwidth"/>
@@ -26,9 +34,19 @@
             <label class="checkbox">Display Text:
               <input id="displayText" type="checkbox" class="checkbox"/>
             </label></a>
+            <div id="insert_controls"></div>
+            <div id="edit_controls"></div>
             <button class="button is-fullwidth" id="finish-interactive">Finish</button>
         </div>
-        <div id="neume_info"></div>
+        <div id="neume_info">
+          <article class="message" style="visibility:hidden;">
+            <div class="message-header">
+              <p></p>
+              <button id="notification-delete" class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body"></div>
+          </article>
+        </div>
       </div>
       <script type="text/javascript">
         var meiFile = "{{ meifile }}";
