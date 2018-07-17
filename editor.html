@@ -12,9 +12,13 @@
         </a>
       </div>
       <div class="navbar-end">
-        <a class="navbar-item" href="https://github.com/DDMAL/Neon2/wiki">
-          <p class="has-text-info">Help</p>
-        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Help</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://github.com/DDMAL/Neon2/wiki">Wiki</a>
+            <a class="navbar-item" href="http://ddmal.music.mcgill.ca">DDMAL</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="columns">
@@ -33,6 +37,9 @@
             <output id="bgOpacityOutput" for="bgOpacitySlider">100</output></a><a class="panel-block">
             <label class="checkbox">Display Text:
               <input id="displayText" type="checkbox" class="checkbox"/>
+            </label>
+            <label class="checkbox">Highlight Staves:
+              <input id="highlightStaves" type="checkbox" class="checkbox"/>
             </label></a>
             <div id="insert_controls"></div>
             <div id="edit_controls"></div>
