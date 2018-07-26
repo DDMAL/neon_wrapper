@@ -31,42 +31,50 @@
             <svg class="icon is-pulled-right">
                 <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-up" />
             </svg>
-          </p><div id="displayContents">
-          <a class="panel-block has-text-centered">
-            <button id="reset-zoom" class="button">Zoom</button>
-            <input id="zoomSlider" step="5" min="25" max="400" value="100" type="range" class="slider is-fullwidth"/>
-            <output id="zoomOutput" for="zoomSlider">100</output></a><a class="panel-block has-text-centered">
-            <button id="reset-opacity" class="button">Neume Opacity</button>
-            <input id="opacitySlider" step="5" min="0" max="100" value="100" type="range" class="slider is-fullwidth"/>
-            <output id="opacityOutput" for="opacitySlider">100</output></a><a class="panel-block has-text-centered">
-            <button id="reset-bg-opacity" class="button">Image Opacity</button>
-            <input id="bgOpacitySlider" step="5" min="0" max="100" value="100" type="range" class="slider is-fullwidth"/>
-            <output id="bgOpacityOutput" for="bgOpacitySlider">100</output></a><div class="panel-block">
-            <label class="checkbox">Display Text:
-              <input id="displayText" type="checkbox" class="checkbox"/>
-            </label>
-            <div id="highlight-dropdown" class="dropdown">
-              <div class="dropdown-trigger">
-                <button id="highlight-button" class="button" aria-haspopup="true" aria-controls="highlight-menu">
-                  <span>Highlight</span>
-                    <svg class="icon">
-                      <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down" />
-                    </svg>
-                </button>
-              </div>
-              <div class="dropdown-menu" id="highlight-menu" role="menu">
-                <div class="dropdown-content">
-                  <a id="highlight-staff" class="dropdown-item">Staff</a>
-                  <a id="highlight-syllable" class="dropdown-item">Syllable</a>
-                  <a id="highlight-neume" class="dropdown-item">Neume</a>
-                  <hr class="dropdown-divider" />
-                  <a id="highlight-none" class="dropdown-item">None</a>
+          </p>
+          <div id="displayContents">
+            <a class="panel-block has-text-centered">
+              <button id="reset-zoom" class="button">Zoom</button>
+              <input id="zoomSlider" step="5" min="25" max="400" value="100" type="range" class="slider is-fullwidth"/>
+              <output id="zoomOutput" for="zoomSlider">100</output>
+            </a>
+            <a class="panel-block has-text-centered">
+              <button id="reset-opacity" class="button">Neume Opacity</button>
+              <input id="opacitySlider" step="5" min="0" max="100" value="100" type="range" class="slider is-fullwidth"/>
+              <output id="opacityOutput" for="opacitySlider">100</output>
+            </a>
+            <a class="panel-block has-text-centered">
+              <button id="reset-bg-opacity" class="button">Image Opacity</button>
+              <input id="bgOpacitySlider" step="5" min="0" max="100" value="100" type="range" class="slider is-fullwidth"/>
+              <output id="bgOpacityOutput" for="bgOpacitySlider">100</output>
+            </a>
+            <div class="panel-block">
+              <label class="checkbox">Display Text:
+                <input id="displayText" type="checkbox" class="checkbox"/>
+              </label>
+              <div id="highlight-dropdown" class="dropdown">
+                <div class="dropdown-trigger">
+                  <button id="highlight-button" class="button" aria-haspopup="true" aria-controls="highlight-menu">
+                    <span>Highlight</span>
+                      <svg class="icon">
+                        <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down" />
+                      </svg>
+                  </button>
                 </div>
-              </div>
-            </div></div></div>
-            <div id="insert_controls"></div>
-            <div id="edit_controls"></div>
-            <button class="button is-fullwidth" id="finish-interactive">Finish</button>
+                <div class="dropdown-menu" id="highlight-menu" role="menu">
+                  <div class="dropdown-content">
+                    <a id="highlight-staff" class="dropdown-item">Staff</a>
+                    <a id="highlight-syllable" class="dropdown-item">Syllable</a>
+                    <a id="highlight-neume" class="dropdown-item">Neume</a>
+                    <hr class="dropdown-divider" />
+                    <a id="highlight-none" class="dropdown-item">None</a>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div id="insert_controls"></div>
+          <div id="edit_controls"></div>
+          <button class="button is-fullwidth" id="finish-interactive">Finish</button>
         </div>
         <div id="neume_info">
           <article class="message" style="display: none;">
