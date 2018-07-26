@@ -15,8 +15,10 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">Help</a>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://github.com/DDMAL/Neon2/wiki">Wiki</a>
-            <a class="navbar-item" href="http://ddmal.music.mcgill.ca">DDMAL</a>
+            <a class="navbar-item" href="//github.com/DDMAL/Neon2/wiki/Instructions">User Guide</a>
+            <a class="navbar-item" href="//github.com/DDMAL/Neon2/wiki">Wiki</a>
+            <a class="navbar-item" href="//ddmal.music.mcgill.ca">DDMAL</a>
+            <a class="navbar-item" onclick="hotkeyDialog()">Hotkeys</a>
           </div>
         </div>
       </div>
@@ -25,7 +27,12 @@
       <div id="svg_output" style="overflow:hidden" class="column is-two-thirds box"></div>
       <div class="column is-one-third">
         <div class="panel">
-          <p class="panel-heading">Controls</p><a class="panel-block has-text-centered">
+          <p class="panel-heading has-dropdown" id="displayHeader">Display
+            <svg class="icon is-pulled-right">
+                <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-up" />
+            </svg>
+          </p><div id="displayContents">
+          <a class="panel-block has-text-centered">
             <button id="reset-zoom" class="button">Zoom</button>
             <input id="zoomSlider" step="5" min="25" max="400" value="100" type="range" class="slider is-fullwidth"/>
             <output id="zoomOutput" for="zoomSlider">100</output></a><a class="panel-block has-text-centered">
@@ -34,19 +41,35 @@
             <output id="opacityOutput" for="opacitySlider">100</output></a><a class="panel-block has-text-centered">
             <button id="reset-bg-opacity" class="button">Image Opacity</button>
             <input id="bgOpacitySlider" step="5" min="0" max="100" value="100" type="range" class="slider is-fullwidth"/>
-            <output id="bgOpacityOutput" for="bgOpacitySlider">100</output></a><a class="panel-block">
+            <output id="bgOpacityOutput" for="bgOpacitySlider">100</output></a><div class="panel-block">
             <label class="checkbox">Display Text:
               <input id="displayText" type="checkbox" class="checkbox"/>
             </label>
-            <label class="checkbox">Highlight Staves:
-              <input id="highlightStaves" type="checkbox" class="checkbox"/>
-            </label></a>
+            <div id="highlight-dropdown" class="dropdown">
+              <div class="dropdown-trigger">
+                <button id="highlight-button" class="button" aria-haspopup="true" aria-controls="highlight-menu">
+                  <span>Highlight</span>
+                    <svg class="icon">
+                      <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down" />
+                    </svg>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="highlight-menu" role="menu">
+                <div class="dropdown-content">
+                  <a id="highlight-staff" class="dropdown-item">Staff</a>
+                  <a id="highlight-syllable" class="dropdown-item">Syllable</a>
+                  <a id="highlight-neume" class="dropdown-item">Neume</a>
+                  <hr class="dropdown-divider" />
+                  <a id="highlight-none" class="dropdown-item">None</a>
+                </div>
+              </div>
+            </div></div></div>
             <div id="insert_controls"></div>
             <div id="edit_controls"></div>
             <button class="button is-fullwidth" id="finish-interactive">Finish</button>
         </div>
         <div id="neume_info">
-          <article class="message" style="visibility:hidden;">
+          <article class="message" style="display: none;">
             <div class="message-header">
               <p></p>
               <button id="notification-delete" class="delete" aria-label="delete"></button>
@@ -54,10 +77,18 @@
             <div class="message-body"></div>
           </article>
         </div>
+        <div id="syl_text" class="box" style="display: none;"></div>
       </div>
       <script type="text/javascript">
         var meiFile = "{{ meifile }}";
         var bgImg = "{{ bgimg }}";
+
+        function hotkeyDialog() {
+          alert(
+            "+ \u{2014} Zoom in\ts \u{2014} Save File\tCtrl-z \u{2014} Undo\n" +
+            "\u{2013} \u{2014} Zoom out\th \u{2014} Hide MEI\tCtrl-Z \u{2014} Redo\n" +
+            "0 \u{2014} Zoom reset\n1/2/3/4 \u{2014} Select by Syllable/Neume/Neume Component/Staff");
+        }
       </script>
       <script src="./editor.js">
       </script>
