@@ -9,8 +9,6 @@ class Neon2(RodanTask):
     category = 'Pitch Correction'
     interactive = True
 
-    autosave = False
-
     input_port_types = [
             {
                 'name': 'OMR',
@@ -36,17 +34,10 @@ class Neon2(RodanTask):
 
     def get_my_interface(self, inputs, settings):
         t = 'editor.html'
-        c = {}
-        if self.autosave:
-            c = {
-                'meifile': nputs['OMR'][0]['resource_url'],
-                'bgimg': inputs['Background'][0]['resource_url']
-            }
-        else:
-            c = {
-                'meifile': inputs['OMR'][0]['resource_url'],
-                'bgimg': inputs['Background'][0]['resource_url']
-            }
+        c = {
+            'meifile': inputs['OMR'][0]['resource_url'],
+            'bgimg': inputs['Background'][0]['resource_url']
+        }
         return (t, c)
 
     def run_my_task(self, inputs, settings, outputs):
@@ -56,22 +47,11 @@ class Neon2(RodanTask):
         outfile = open(outfile_path, 'w')
         correctedMEI = settings['@user_input']
         outfile.write(correctedMEI)
-        outfile.write("\n<!-- Corrected with Neon -->")
         outfile.close()
         return True
 
     def validate_my_user_input(self, inputs, settings, user_input):
-        if (user_input['mode'] == "autosave"):
-            self.autosave = True
-            return SELF.WAITING_FOR_INPUT()
         return { '@done': True, '@user_input': user_input['user_input'] }
 
     def my_error_information(self, exc, traceback):
         pass
-
-    def write_outfile(self, settings, outputs):
-        outfile_path = outputs['Corrected'][0]['resource_path']
-        outfile = open(outfile_path, 'w')
-        correctedMEI = settings['@user_input']
-        outfile.write(correctedMEI)
-        outfile.close()
