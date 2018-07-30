@@ -9,6 +9,9 @@ class Neon2(RodanTask):
     category = 'Pitch Correction'
     interactive = True
 
+    autosave = False
+    autosaveData = ""
+
     input_port_types = [
             {
                 'name': 'OMR',
@@ -34,10 +37,20 @@ class Neon2(RodanTask):
 
     def get_my_interface(self, inputs, settings):
         t = 'editor.html'
-        c = {
-            'meifile': inputs['OMR'][0]['resource_url'],
-            'bgimg': inputs['Background'][0]['resource_url']
-        }
+        c = {}
+        if self.autosave is True:
+            # Use autosaveData for file
+            c = {
+                'meifile': self.autosaveData,
+                'bgimg': inputs['Background'][0]['resource_url'],
+                'data': 'true'
+            }
+        else:
+            c = {
+                'meifile': inputs['OMR'][0]['resource_url'],
+                'bgimg': inputs['Background'][0]['resource_url'],
+                'data': 'false'
+            }
         return (t, c)
 
     def run_my_task(self, inputs, settings, outputs):
@@ -51,6 +64,13 @@ class Neon2(RodanTask):
         return True
 
     def validate_my_user_input(self, inputs, settings, user_input):
+        if user_input['mode'] == 'autosave':
+            self.autosave = True
+            self.autosaveData = user_input['user_input']
+            return {}
+        elif user_input['mode'] == 'revert':
+            self.autosave = False
+            return self.WAITING_FOR_INPUT()
         return { '@done': True, '@user_input': user_input['user_input'] }
 
     def my_error_information(self, exc, traceback):

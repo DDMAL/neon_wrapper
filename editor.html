@@ -87,9 +87,9 @@
         <div id="syl_text" class="box" style="display: none;"></div>
       </div>
       <script type="text/javascript">
-        var meiFile = "{{ meifile }}";
+        var meiFile = "{{ meifile|escapejs }}";
+        var rawData = "{{ data }}"; 
         var bgImg = "{{ bgimg }}";
-
         function hotkeyDialog() {
           alert(
             "+ \u{2014} Zoom in\ts \u{2014} Save File\tCtrl-z \u{2014} Undo\n" +
