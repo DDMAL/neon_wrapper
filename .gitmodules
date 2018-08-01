@@ -1,4 +1,0 @@
-[submodule "Neon2"]
-	path = Neon2
-        url = git@github.com:DDMAL/Neon2
-        branch = master 
