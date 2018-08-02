@@ -6,4 +6,4 @@ logger = logging.getLogger('rodan')
 
 from rodan.jobs import module_loader
 
-module_loader('rodan.jobs.neon_wrapper.wrapper')
+module_loader('rodan.jobs.neon2-wrapper.wrapper')
