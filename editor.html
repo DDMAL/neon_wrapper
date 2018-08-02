@@ -1,9 +1,9 @@
-<html>
+<html style="height: 100%; overflow: hidden;">
   <head>
     <title>Neon2</title>
     <script src="./pretty.js"></script>
   </head>
-  <body>
+  <body style="height: 100%; width: 100%; overflow: hidden;">
     <div class="navbar is-light">
       <div class="navbar-start">
         <p class="navbar-item">Neon2</p>
@@ -23,23 +23,23 @@
         </div>
       </div>
     </div>
-    <div class="columns">
-      <div id="svg_output" style="overflow:hidden" class="column is-two-thirds box"></div>
-      <div class="column is-one-third">
+    <div class="columns" style="overflow: hidden; height: 94%; margin: 0;">
+      <div id="svg_output" style="overflow:hidden; height: 750px;" class="column is-two-thirds box"></div>
+      <div class="column is-one-third" style="overflow-x: hidden; overflow-y: auto;">
         <div class="panel">
           <p class="panel-heading has-dropdown" id="displayHeader">Display
             <svg class="icon is-pulled-right">
-                <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-up" />
+                <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down" />
             </svg>
           </p>
           <div id="displayContents">
             <a class="panel-block has-text-centered">
-              <button id="reset-zoom" class="button">Zoom</button>
+              <button id="reset-zoom" class="button" style="width: 12em;">Zoom</button>
               <input id="zoomSlider" step="5" min="25" max="400" value="100" type="range" class="slider is-fullwidth"/>
               <output id="zoomOutput" for="zoomSlider">100</output>
             </a>
             <a class="panel-block has-text-centered">
-              <button id="reset-opacity" class="button">Neume Opacity</button>
+              <button id="reset-opacity" class="button">Glyph Opacity</button>
               <input id="opacitySlider" step="5" min="0" max="100" value="100" type="range" class="slider is-fullwidth"/>
               <output id="opacityOutput" for="opacitySlider">100</output>
             </a>
@@ -49,16 +49,17 @@
               <output id="bgOpacityOutput" for="bgOpacitySlider">100</output>
             </a>
             <div class="panel-block">
-              <label class="checkbox">Display Text:
+              <label class="checkbox">Display Text:&nbsp;
                 <input id="displayText" type="checkbox" class="checkbox"/>
               </label>
               <div id="highlight-dropdown" class="dropdown">
                 <div class="dropdown-trigger">
                   <button id="highlight-button" class="button" aria-haspopup="true" aria-controls="highlight-menu">
                     <span>Highlight</span>
-                      <svg class="icon">
-                        <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down" />
-                      </svg>
+                    <span id="highlight-type">&nbsp;- Off</span>
+                    <svg class="icon">
+                      <use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down" />
+                    </svg>
                   </button>
                 </div>
                 <div class="dropdown-menu" id="highlight-menu" role="menu">
