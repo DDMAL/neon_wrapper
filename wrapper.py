@@ -67,7 +67,7 @@ class Neon2(RodanTask):
         if user_input['mode'] == 'autosave':
             self.autosave = True
             self.autosaveData = user_input['user_input']
-            return {}
+            return self.WAITING_FOR_INPUT()
         elif user_input['mode'] == 'revert':
             self.autosave = False
             self.autosaveData = ""
