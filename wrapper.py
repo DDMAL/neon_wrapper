@@ -14,13 +14,13 @@ class Neon2(RodanTask):
 
     input_port_types = [
             {
-                'name': 'OMR',
+                'name': 'MEI',
                 'minimum': 1,
                 'maximum': 1,
                 'resource_types': ['application/mei+xml']
             },
             {
-                'name': 'Background',
+                'name': 'Image',
                 'minimum': 1,
                 'maximum': 1,
                 'resource_types': ['image/rgba+png']
@@ -42,13 +42,13 @@ class Neon2(RodanTask):
             # Use autosaveData for file
             c = {
                 'meifile': self.autosaveData,
-                'bgimg': inputs['Background'][0]['resource_url'],
+                'bgimg': inputs['Image'][0]['resource_url'],
                 'data': 'true'
             }
         else:
             c = {
-                'meifile': inputs['OMR'][0]['resource_url'],
-                'bgimg': inputs['Background'][0]['resource_url'],
+                'meifile': inputs['MEI'][0]['resource_url'],
+                'bgimg': inputs['Image'][0]['resource_url'],
                 'data': 'false'
             }
         return (t, c)
