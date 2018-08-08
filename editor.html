@@ -8,7 +8,7 @@
 <body style="height:100%;width:100%;overflow:hidden;">
     <div class="navbar is-light">
         <div class="navbar-start">
-            <a class="navbar-item" href="../">
+            <a class="navbar-item" onclick="neon2Dialog()">
                 <p>Neon2</p>
             </a>
             <a class="navbar-item">
@@ -34,7 +34,7 @@
                             <div
                                 class="panel-block"><label class="checkbox">Display Text:&nbsp;<input class="checkbox" id="displayText" type="checkbox"/></label>
                                 <div class="dropdown" id="highlight-dropdown">
-                                    <div class="dropdown-trigger"><button class="button" id="highlight-button" aria-haspopup="true" aria-controls="highlight-menu"><span>Highlight</span><span id="highlight-type">&nbsp;- Off</span><svg class="icon"><use id="toggleDisplay" xlink:href="/img/icons.svg#dropdown-down"></use></svg></button></div>
+                                    <div class="dropdown-trigger"><button class="button" id="highlight-button" aria-haspopup="true" aria-controls="highlight-menu"><span>Highlight</span><span id="highlight-type">&nbsp;- Off</span><svg class="icon"><use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down"></use></svg></button></div>
                                     <div
                                         class="dropdown-menu" id="highlight-menu" role="menu">
                                         <div class="dropdown-content"><a class="dropdown-item" id="highlight-staff">Staff</a><a class="dropdown-item" id="highlight-syllable">Syllable</a><a class="dropdown-item" id="highlight-neume">Neume</a>
@@ -66,6 +66,12 @@
                 "+ : Zoom in\t\ts : Save File\t\tCtrl-z or \u{2318}-z : Undo\n" +
                 "\u{2013} : Zoom out\t\th : Hide MEI\t\tCtrl-Z or \u{2318}-Z : Redo\n" +
                 "0 : Zoom reset\n\n1/2/3/4 : Select by Syllable/Neume/Neume Component/Staff");
+        }
+
+        function neon2Dialog() {
+          alert(
+            "Neon2 is a web-based square note notation music editor. For more information, please refer to the Wiki in the Help menu."
+          );
         }
     </script>
     <script src="./editor.js"></script>
