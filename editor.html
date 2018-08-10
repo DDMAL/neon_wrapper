@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="columns" style="overflow:hidden;height:94%;margin:0;">
-        <div class="column is-two-thirds box" id="svg_output" style="overflow:hidden;height:750px;"></div>
+        <div class="column is-two-thirds box" id="svg_output" style="overflow:hidden;height:getHeight();"></div>
         <div class="column is-one-third" style="overflow-x:hidden;overflow-y:auto;">
             <div class="panel">
                 <p class="panel-heading has-dropdown" id="displayHeader">Display<svg class="icon is-pulled-right"><use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down"></use></svg></p>
@@ -72,6 +72,10 @@
           alert(
             "Neon2 is a web-based square note notation music editor. For more information, please refer to the Wiki in the Help menu."
           );
+        }
+
+        function getHeight() {
+            alert(window.innerHeight);
         }
     </script>
     <script src="./editor.js"></script>
