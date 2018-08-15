@@ -36,6 +36,7 @@
                             class="panel-block has-text-centered"><button class="button" id="reset-bg-opacity">Image Opacity</button><input class="slider is-fullwidth" id="bgOpacitySlider" step="5" min="0" max="100" value="100" type="range" /><output id="bgOpacityOutput" for="bgOpacitySlider">100</output></a>
                             <div
                                 class="panel-block"><label class="checkbox">Display Text:&nbsp;<input class="checkbox" id="displayText" type="checkbox"/></label>
+                                <label class="checkbox">Display Info:&nbsp;<input class="checkbox" id="displayInfo" type="checkbox" checked="checked"/></label>
                                 <div class="dropdown" id="highlight-dropdown">
                                     <div class="dropdown-trigger"><button class="button" id="highlight-button" aria-haspopup="true" aria-controls="highlight-menu"><span>Highlight</span><span id="highlight-type">&nbsp;- Off</span><svg class="icon"><use id="toggleDisplay" xlink:href="./img/icons.svg#dropdown-down"></use></svg></button></div>
                                     <div
@@ -49,13 +50,7 @@
         <div id="insert_controls"></div>
         <div id="edit_controls"></div>
     </div>
-    <div id="neume_info">
-        <article class="message" style="display:none;">
-            <div class="message-header">
-                <p></p><button class="delete" id="notification-delete" aria-label="delete"></button></div>
-            <div class="message-body"></div>
-        </article>
-    </div>
+    <div id="neume_info"></div>
     <div class="box" id="syl_text" style="display:none;"></div>
     </div>
     <script type="text/javascript">
