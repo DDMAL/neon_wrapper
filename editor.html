@@ -9,21 +9,22 @@
     <div class="overlay" id="loading">
         <div class="loader"></div>
     </div>
-    <div class="navbar is-light">
-        <div class="navbar-start">
-            <a class="navbar-item" onclick="neon2Dialog()">
-                <p>Neon2</p>
-            </a>
-            <a class="navbar-item">
-                <div id="dropdown_toggle"><button class="button" id="edit_mode">Edit MEI</button></div>
-            </a><a class="navbar-item" id="notification-content" style="display:none;"></a></div>
-        <div class="navbar-end">
+    <nav class="navbar is-light">
+        <div class="navbar-brand"><a class="navbar-item" href="../">
+            <p>Neon3</p></a><a class="navbar-item" id="notification-content" style="display:none;"></a><a class="navbar-burger" id="burgerMenu" role="button" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></a></div>
+        <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start"><a class="navbar-item">
+                <div id="dropdown_toggle">
+                <button class="button" id="edit_mode">Edit MEI</button>
+                </div></a></div>
+            <div class="navbar-end">
             <div class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">Help</a>
-                <div class="navbar-dropdown is-right"><a class="navbar-item" href="//github.com/DDMAL/Neon2/wiki/Instructions" target="_blank">User Guide</a><a class="navbar-item" href="//github.com/DDMAL/Neon2/wiki" target="_blank">Wiki</a><a class="navbar-item" href="//ddmal.music.mcgill.ca" target="_blank">DDMAL</a><a class="navbar-item"
-                        onclick="hotkeyDialog()">Hotkeys</a></div>
+                <div class="navbar-dropdown is-right"><a class="navbar-item" href="//github.com/DDMAL/Neon2/wiki/Instructions" target="_blank">User Guide</a><a class="navbar-item" href="//github.com/DDMAL/Neon2/wiki" target="_blank">Wiki</a><a class="navbar-item" href="//ddmal.music.mcgill.ca" target="_blank">DDMAL</a>
+                    <a class="navbar-item" onclick="hotkeyDialog()">Hotkeys</a></div>
+            </div>
             </div>
         </div>
-    </div>
+    </nav>
     <div class="columns" style="overflow:hidden;height:94%;margin:0;">
         <div class="column is-two-thirds box" id="svg_output" style="overflow:hidden;height:getHeight();"></div>
         <div class="column is-one-third" style="overflow-x:hidden;overflow-y:auto;">
