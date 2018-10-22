@@ -1,5 +1,6 @@
 from rodan.jobs.base import RodanTask
 
+
 class Neon2(RodanTask):
     name = 'Neon2'
     author = 'Juliette Regimbal & Zoe McLennan'
@@ -13,26 +14,26 @@ class Neon2(RodanTask):
     autosaveData = ""
 
     input_port_types = [
-            {
-                'name': 'MEI',
-                'minimum': 1,
-                'maximum': 1,
-                'resource_types': ['application/mei+xml']
-            },
-            {
-                'name': 'Image',
-                'minimum': 1,
-                'maximum': 1,
-                'resource_types': ['image/rgba+png']
-            },
+        {
+            'name': 'MEI',
+            'minimum': 1,
+            'maximum': 1,
+            'resource_types': ['application/mei+xml']
+        },
+        {
+            'name': 'Image',
+            'minimum': 1,
+            'maximum': 1,
+            'resource_types': ['image/rgba+png']
+        },
     ]
     output_port_types = [
-            {
-                'name': 'Corrected',
-                'minimum': 1,
-                'maximum': 1,
-                'resource_types': ['application/mei+xml']
-            },
+        {
+            'name': 'Corrected',
+            'minimum': 1,
+            'maximum': 1,
+            'resource_types': ['application/mei+xml']
+        },
     ]
 
     def get_my_interface(self, inputs, settings):
@@ -72,7 +73,7 @@ class Neon2(RodanTask):
             self.autosave = False
             self.autosaveData = ""
             return self.WAITING_FOR_INPUT()
-        return { '@done': True, '@user_input': user_input['user_input'] }
+        return {'@done': True, '@user_input': user_input['user_input']}
 
     def my_error_information(self, exc, traceback):
         pass
