@@ -6,3 +6,4 @@ var view = new NeonView({
     mode: "rodan",
     raw: rawData
 });
+view.start();

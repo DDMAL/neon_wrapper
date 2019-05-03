@@ -3830,7 +3830,7 @@ vendors@^1.0.0:
   integrity sha512-w/hry/368nO21AN9QljsaIhb9ZiZtZARoVH5f3CsFbawdLdayCgKRPup7CggujvySMxx0I91NOyxdVENohprLQ==
 
 "verovio-dev@file:Neon2/src/verovio-dev":
-  version "2.0.0-39"
+  version "2.1.0-15"
 
 vm-browserify@0.0.4:
   version "0.0.4"

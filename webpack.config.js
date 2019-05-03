@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 
 module.exports = {
     mode: "production",
@@ -11,12 +10,6 @@ module.exports = {
         path: path.resolve(__dirname, "static"),
         filename: "[name].js"
     },
-    plugins: [
-        new webpack.ProvidePlugin({
-            d3: 'd3',
-            $: 'jquery'
-        })
-    ],
     node: {
         fs: 'empty'
     },
@@ -42,5 +35,10 @@ module.exports = {
                 ]
             }
         ]
+    },
+    externals: {
+        'verovio-dev': 'verovio',
+        jquery: 'jQuery',
+        d3: 'd3'
     }
 };
