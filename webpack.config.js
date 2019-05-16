@@ -33,6 +33,18 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.rng$/,
+                use: [
+                    'raw-loader'
+                ]
+            },
+            {
+                test: /Worker\.js/,
+                use: [
+                    'worker-loader'
+                ]
             }
         ]
     },
