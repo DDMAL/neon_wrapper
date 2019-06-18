@@ -1,7 +1,7 @@
 import NeonView from './Neon/src/NeonView.js';
 import DisplayPanel from './Neon/src/DisplayPanel/DisplayPanel.js';
 import SingleView from './Neon/src/SingleView/SingleView.js';
-import SingleEditMode from './Neon/src/SingleEdit/SingleEditMode.js';
+import SingleEditMode from './Neon/src/SquareEdit/SingleEditMode.js';
 import InfoModule from './Neon/src/InfoModule.js';
 import TextView from './Neon/src/TextView.js';
 
@@ -14,9 +14,8 @@ if (rawData === "true") {
 }
 
 let map = new Map();
-console.log(data);
+console.log(SingleEditMode);
 data.then(content => {
-  console.log(content);
   map.set(0, content);
   let params = {
     mode: 'single',
@@ -28,7 +27,7 @@ data.then(content => {
     View: SingleView,
     Display: DisplayPanel,
     Info: InfoModule,
-    Edit: SingleEditMode,
+    NeumeEdit: SingleEditMode,
     TextView: TextView
   }
 
