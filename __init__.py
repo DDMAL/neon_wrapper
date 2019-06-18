@@ -1,2 +1,2 @@
 __version__ = "0.2.0"
-from wrapper import Neon2
+from wrapper import Neon

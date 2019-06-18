@@ -1,9 +1,9 @@
-import NeonView from './Neon2/src/NeonView.js';
-import DisplayPanel from './Neon2/src/DisplayPanel/DisplayPanel.js';
-import SingleView from './Neon2/src/SingleView/SingleView.js';
-import SingleEditMode from './Neon2/src/SingleEdit/SingleEditMode.js';
-import InfoModule from './Neon2/src/InfoModule.js';
-import TextView from './Neon2/src/TextView.js';
+import NeonView from './Neon/src/NeonView.js';
+import DisplayPanel from './Neon/src/DisplayPanel/DisplayPanel.js';
+import SingleView from './Neon/src/SingleView/SingleView.js';
+import SingleEditMode from './Neon/src/SingleEdit/SingleEditMode.js';
+import InfoModule from './Neon/src/InfoModule.js';
+import TextView from './Neon/src/TextView.js';
 
 let data;
 
