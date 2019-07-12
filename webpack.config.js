@@ -4,7 +4,7 @@ module.exports = {
     mode: "production",
     entry: {
         editor: "./editor.js",
-        pretty: "./Neon2/src/pretty.js"
+        pretty: "./Neon/src/pretty.js"
     },
     output: {
         path: path.resolve(__dirname, "static"),

@@ -6,7 +6,7 @@ mkdir -p static
 
 ## Make NPM Module
 
-cd Neon2
+cd Neon
 
 cat verovio-util/verovio-npm-start.js verovio-util/verovio.js verovio-util/verovio-proxy.js \
     verovio-util/verovio-npm-end.js > src/verovio-dev/index.js

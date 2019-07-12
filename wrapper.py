@@ -1,10 +1,10 @@
 from rodan.jobs.base import RodanTask
 
 
-class Neon2(RodanTask):
-    name = 'Neon2'
+class Neon(RodanTask):
+    name = 'Neon'
     author = 'Juliette Regimbal & Zoe McLennan'
-    description = 'Neon Editor Online'
+    description = 'Neume Editor Online'
     settings = {}
     enabled = True
     category = 'Pitch Correction'
