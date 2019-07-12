@@ -8,32 +8,33 @@ import InfoModule from './Neon/src/InfoModule.js';
 import TextView from './Neon/src/TextView.js';
 import TextEditMode from './Neon/src/TextEditMode.js';
 
-let data;
+var view;
+init();
 
-if (rawData === "true") {
-  data = Promise.resolve(meiFile);
-} else {
-  data = fetch(meiFile).then(response => response.text());
-}
+async function init () {
+  if (manifestText !== '') {
+    let manifest = JSON.parse(manifestText);
+    let params = {
+      manifest: manifest,
+      Display: DisplayPanel,
+      Info: InfoModule,
+      TextView: TextView,
+      TextEdit: TextEditMode
+    };
+    let mediaType = await window.fetch(manifest.image).then(response => {
+      if (repsonse.ok) {
+        return response.headers.get('Content-Type');
+      } else {
+        throw new Error(response.statusText);
+      }
+    });
+    // Use media type to set which view and edit modules to use.
+    let isSinglePage = mediaType.match(/^image\/*/);
+    params.View = singlePage ? SingleView : DivaView;
+    params.NeumeEdit = singlePage ? SingleEditMode : DivaEdit;
 
-let map = new Map();
-console.log(SingleEditMode);
-data.then(content => {
-  map.set(0, content);
-  let params = {
-    mode: 'single',
-    options: {
-      image: bgImg,
-      meiMap: map,
-      name: 'Rodan MEI File'
-    },
-    View: SingleView,
-    Display: DisplayPanel,
-    Info: InfoModule,
-    NeumeEdit: SingleEditMode,
-    TextView: TextView
+    // Start Neon
+    view = new NeonView(params);
+    view.start();
   }
-
-  var view = new NeonView(params);
-  view.start();
-})
+}
