@@ -13,7 +13,7 @@ init();
 
 async function init () {
   if (manifestText !== '') {
-    let manifest = JSON.parse(manifestText);
+    let manifest = JSON.parse(decodeURIComponent(manifestText));
     let params = {
       manifest: manifest,
       Display: DisplayPanel,
@@ -22,7 +22,7 @@ async function init () {
       TextEdit: TextEditMode
     };
     let mediaType = await window.fetch(manifest.image).then(response => {
-      if (repsonse.ok) {
+      if (response.ok) {
         return response.headers.get('Content-Type');
       } else {
         throw new Error(response.statusText);
@@ -30,8 +30,8 @@ async function init () {
     });
     // Use media type to set which view and edit modules to use.
     let isSinglePage = mediaType.match(/^image\/*/);
-    params.View = singlePage ? SingleView : DivaView;
-    params.NeumeEdit = singlePage ? SingleEditMode : DivaEdit;
+    params.View = isSinglePage ? SingleView : DivaView;
+    params.NeumeEdit = isSinglePage ? SingleEditMode : DivaEdit;
 
     // Start Neon
     view = new NeonView(params);
