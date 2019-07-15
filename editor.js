@@ -36,5 +36,38 @@ async function init () {
     // Start Neon
     view = new NeonView(params);
     view.start();
+
+    let div = document.getElementsByClassName('navbar-start')[0];
+    let newDiv = document.createElement('div');
+    let validationButton = document.createElement('button');
+    let anchor = document.createElement('a');
+    anchor.classList.add('navbar-item');
+    validationButton.classList.add('button');
+    validationButton.textContent = 'Validate';
+    anchor.append(validationButton);
+    newDiv.append(anchor);
+    div.append(newDiv);
+    validationButton.addEventListener('click', (evt) => {
+      view.getPageMEI(view.view.getCurrentPageURI()).then(mei => {
+        return window.fetch('', {
+          method: 'POST',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            'user_input': mei
+          })
+        });
+      }).then(response => {
+        if (response.ok) {
+          window.close();
+        } else {
+          console.error(response);
+        }
+      }).catch(err => {
+        console.error(err);
+      });
+    });
   }
 }
