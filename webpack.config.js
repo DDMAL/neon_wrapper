@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
     mode: "production",
@@ -45,6 +46,12 @@ module.exports = {
                 use: [
                     'worker-loader'
                 ]
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    'html-loader'
+                ]
             }
         ]
     },
@@ -52,5 +59,10 @@ module.exports = {
         'verovio-dev': 'verovio',
         jquery: 'jQuery',
         d3: 'd3'
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            LINK_LOCATION: JSON.stringify('#')
+        })
+    ]
 };
