@@ -62,7 +62,8 @@ module.exports = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            LINK_LOCATION: JSON.stringify('#')
+            __LINK_LOCATION__: JSON.stringify('#'),
+            __NEON_VERSION__: JSON.stringify('v4.0.0')
         })
     ]
 };
