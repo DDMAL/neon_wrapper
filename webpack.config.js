@@ -1,5 +1,8 @@
 const path = require("path");
 const webpack = require("webpack");
+const childProcess = require('child_process');
+
+let commitHash = childProcess.execSync('(cd Neon && git rev-parse --short HEAD)').toString();
 
 module.exports = {
     mode: "production",
@@ -63,7 +66,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             __LINK_LOCATION__: JSON.stringify('#'),
-            __NEON_VERSION__: JSON.stringify('v4.0.0')
+            __NEON_VERSION__: JSON.stringify('Commit ' + commitHash)
         })
     ]
 };
