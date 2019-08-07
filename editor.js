@@ -8,7 +8,6 @@ import InfoModule from './Neon/src/InfoModule.js';
 import TextView from './Neon/src/TextView.js';
 import TextEditMode from './Neon/src/TextEditMode.js';
 
-var view;
 init();
 
 async function init () {
@@ -34,7 +33,7 @@ async function init () {
     params.NeumeEdit = isSinglePage ? SingleEditMode : DivaEdit;
 
     // Start Neon
-    view = new NeonView(params);
+    let view = new NeonView(params);
     view.start();
 
     let div = document.getElementsByClassName('navbar-start')[0];
@@ -68,6 +67,5 @@ async function init () {
       }).catch(err => {
         console.error(err);
       });
-    });
   }
 }
