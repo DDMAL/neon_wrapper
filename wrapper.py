@@ -1,4 +1,7 @@
 from rodan.jobs.base import RodanTask
+from uuid import uuid4
+import datetime
+import json
 
 
 class Neon(RodanTask):
@@ -9,9 +12,6 @@ class Neon(RodanTask):
     enabled = True
     category = 'Pitch Correction'
     interactive = True
-
-    autosave = False
-    autosaveData = ""
 
     input_port_types = [
         {
@@ -38,20 +38,11 @@ class Neon(RodanTask):
 
     def get_my_interface(self, inputs, settings):
         t = 'editor.html'
-        c = {}
-        if self.autosave is True:
-            # Use autosaveData for file
-            c = {
-                'meifile': self.autosaveData,
-                'bgimg': inputs['Image'][0]['resource_url'],
-                'data': 'true'
-            }
-        else:
-            c = {
-                'meifile': inputs['MEI'][0]['resource_url'],
-                'bgimg': inputs['Image'][0]['resource_url'],
-                'data': 'false'
-            }
+
+        manifestText = self.generate_manifest_text(inputs)
+        print manifestText
+        c = {'manifestText': manifestText}
+
         return (t, c)
 
     def run_my_task(self, inputs, settings, outputs):
@@ -65,15 +56,45 @@ class Neon(RodanTask):
         return True
 
     def validate_my_user_input(self, inputs, settings, user_input):
-        if user_input['mode'] == 'autosave':
-            self.autosave = True
-            self.autosaveData = user_input['user_input']
-            return self.WAITING_FOR_INPUT()
-        elif user_input['mode'] == 'revert':
-            self.autosave = False
-            self.autosaveData = ""
-            return self.WAITING_FOR_INPUT()
         return {'@done': True, '@user_input': user_input['user_input']}
 
     def my_error_information(self, exc, traceback):
         pass
+
+    def generate_manifest_text(self, inputs):
+
+        manifest = {
+            '@context': [
+                'http://www.w3.org/ns/anno.jsonld',
+                {
+                    'schema': 'http://schema.org/',
+                    'title': 'schema:name',
+                    'timestamp': 'schema:dateModified',
+                    'image': {
+                        '@id': 'schema:image',
+                        '@type': '@id'
+                    },
+                    'mei_annotations': {
+                        '@id': 'Annotation',
+                        '@type': '@id',
+                        '@container': '@list'
+                    }
+                }
+            ],
+            'mei_annotations': []
+        }
+        manifest['title'] = 'Rodan-generated Manifest'
+        manifest['@id'] = 'urn:uuid' + str(uuid4())
+        manifest['timestamp'] = datetime.datetime.utcnow().isoformat()
+
+        if len(inputs['Image']) > 0:
+            manifest['image'] = inputs['Image'][0]['resource_url']
+            annotation = {
+                'id': 'urn:uuid' + str(uuid4()),
+                'type': 'Annotation',
+                'body': inputs['MEI'][0]['resource_url'],
+                'target': inputs['Image'][0]['resource_url']
+            }
+            manifest['mei_annotations'].append(annotation)
+
+        return json.dumps(manifest)
