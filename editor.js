@@ -1,12 +1,12 @@
-import NeonView from './Neon/src/NeonView.js';
-import DisplayPanel from './Neon/src/DisplayPanel/DisplayPanel.js';
-import DivaView from './Neon/src/DivaView.js';
-import DivaEdit from './Neon/src/SquareEdit/DivaEditMode.js';
-import SingleView from './Neon/src/SingleView/SingleView.js';
-import SingleEditMode from './Neon/src/SquareEdit/SingleEditMode.js';
-import InfoModule from './Neon/src/InfoModule.js';
-import TextView from './Neon/src/TextView.js';
-import TextEditMode from './Neon/src/TextEditMode.js';
+import NeonView from './Neon/src/NeonView';
+import DisplayPanel from './Neon/src/DisplayPanel/DisplayPanel';
+import DivaView from './Neon/src/DivaView';
+import DivaEdit from './Neon/src/SquareEdit/DivaEditMode';
+import SingleView from './Neon/src/SingleView/SingleView';
+import SingleEditMode from './Neon/src/SquareEdit/SingleEditMode';
+import InfoModule from './Neon/src/InfoModule';
+import TextView from './Neon/src/TextView';
+import TextEditMode from './Neon/src/TextEditMode';
 
 var view;
 init();

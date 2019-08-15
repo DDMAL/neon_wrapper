@@ -8,7 +8,7 @@ module.exports = {
     mode: "production",
     entry: {
         editor: "./editor.js",
-        pretty: "./Neon/src/pretty.js"
+        pretty: "./Neon/src/pretty.ts"
     },
     output: {
         path: path.resolve(__dirname, "static"),
@@ -68,6 +68,9 @@ module.exports = {
     externals: {
         'verovio-dev': 'verovio',
         d3: 'd3'
+    },
+    resolve: {
+      extensions: [ '.ts', '.js' ]
     },
     plugins: [
         new webpack.DefinePlugin({
