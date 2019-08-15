@@ -3,7 +3,7 @@
   extension: txt
 
 - mimetype: image/rgba+png
-  description: RGB PNG with Alpha
+  description: PNG image file with alpha channel
   extension: png
 
 - mimetype: application/mei+xml
