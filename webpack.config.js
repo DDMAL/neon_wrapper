@@ -20,6 +20,13 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.tsx?$/,
+                use: [
+                    'awesome-typescript-loader'
+                ],
+                exclude: /node_modules/
+            },
+            {
                 test: /\.css$/,
                 use: [
                     'style-loader',
@@ -60,7 +67,6 @@ module.exports = {
     },
     externals: {
         'verovio-dev': 'verovio',
-        jquery: 'jQuery',
         d3: 'd3'
     },
     plugins: [
