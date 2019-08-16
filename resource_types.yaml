@@ -2,8 +2,8 @@
   description: Plain text
   extension: txt
 
-- mimetype: image/rgba+png
-  description: RGB PNG with Alpha
+- mimetype: image/png
+  description: PNG imgage file
   extension: png
 
 - mimetype: application/mei+xml
