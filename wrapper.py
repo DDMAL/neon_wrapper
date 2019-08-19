@@ -24,7 +24,7 @@ class Neon(RodanTask):
             'name': 'Image',
             'minimum': 1,
             'maximum': 1,
-            'resource_types': ['image/rgba+png']
+            'resource_types': ['image/png']
         },
     ]
     output_port_types = [
