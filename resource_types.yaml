@@ -3,7 +3,7 @@
   extension: txt
 
 - mimetype: image/png
-  description: PNG imgage file
+  description: PNG image file
   extension: png
 
 - mimetype: application/mei+xml
