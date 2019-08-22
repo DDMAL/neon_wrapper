@@ -67,5 +67,6 @@ async function init () {
       }).catch(err => {
         console.error(err);
       });
+    });
   }
 }
