@@ -24,7 +24,9 @@ class Neon(RodanTask):
             'name': 'Image',
             'minimum': 1,
             'maximum': 1,
-            'resource_types': ['image/png']
+            'resource_types': lambda mime: mime.endswith('png')
+            # Possible resource types include:
+            #   'resource_types': ['image/rgb+png', 'image/rgba+png', 'image/png', 'image/onebit+png', 'image/greyscale+png', 'image/grey16+png']
         },
     ]
     output_port_types = [
