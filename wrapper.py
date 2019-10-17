@@ -8,7 +8,7 @@ class Neon(RodanTask):
     name = 'Neon'
     author = 'Juliette Regimbal & Zoe McLennan'
     description = 'Neume Editor Online'
-    settings = {}
+    settings = {'job_queue': 'Python2'}
     enabled = True
     category = 'Pitch Correction'
     interactive = True
