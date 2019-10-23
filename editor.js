@@ -29,9 +29,12 @@ async function init () {
       }
     });
     // Use media type to set which view and edit modules to use.
-    let isSinglePage = mediaType.match(/^image\/*/);
-    params.View = isSinglePage ? SingleView : DivaView;
-    params.NeumeEdit = isSinglePage ? SingleEditMode : DivaEdit;
+    // let isSinglePage = mediaType.match(/^image\/*/);
+    // params.View = isSinglePage ? SingleView : DivaView;
+    // params.NeumeEdit = isSinglePage ? SingleEditMode : DivaEdit;
+    // TODO this is a debugging fix do not merge.
+    params.View = SingleView;
+    params.NeumeEdit = SingleEditMode;
 
     // Start Neon
     view = new NeonView(params);
