@@ -21,17 +21,14 @@ async function init () {
       TextView: TextView,
       TextEdit: TextEditMode
     };
-    let mediaType = await window.fetch(manifest.image).then(response => {
-      if (response.ok) {
-        return response.headers.get('Content-Type');
-      } else {
-        throw new Error(response.statusText);
-      }
-    });
-    // Use media type to set which view and edit modules to use.
-    let isSinglePage = mediaType.match(/^image\/*/);
-    params.View = isSinglePage ? SingleView : DivaView;
-    params.NeumeEdit = isSinglePage ? SingleEditMode : DivaEdit;
+
+    let pageCount = manifest['mei_annotations'].length;
+    if (pageCount === 0) {
+      throw new Error('At least one page is required in \'mei_annotations\'! 0 provided.');
+    }
+
+    params.View = pageCount > 1 ? DivaView : SingleView;
+    params.NeumeEdit = pageCount > 1 ? DivaEdit : SingleEditMode;
 
     // Start Neon
     view = new NeonView(params);
