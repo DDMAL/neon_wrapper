@@ -2,16 +2,10 @@
 # A helper script to deploy a plain verovio into a standalone JS toolkit
 # and an NPM module.
 
-mkdir -p static
+mkdir -p static/Neon
 
 ## Make NPM Module
 
 cd Neon
 
-cat verovio-util/verovio-npm-start.js verovio-util/verovio.js verovio-util/verovio-proxy.js \
-    verovio-util/verovio-npm-end.js > src/verovio-dev/index.js
-
-## Make regular toolkit
-
-cat verovio-util/verovio.js verovio-util/verovio-js-start.js verovio-util/verovio-proxy.js \
-    > ../static/verovio-toolkit.js
+./setup-verovio

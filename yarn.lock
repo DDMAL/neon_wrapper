@@ -4795,8 +4795,8 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-"verovio-dev@file:Neon/src/verovio-dev":
-  version "2.1.0-15"
+"verovio-dev@file:Neon/verovio-util/verovio-dev":
+  version "2.2.0-4"
 
 vm-browserify@^1.0.1:
   version "1.1.0"
