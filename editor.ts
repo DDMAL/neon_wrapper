@@ -7,19 +7,23 @@ import SingleEditMode from './Neon/src/SquareEdit/SingleEditMode';
 import InfoModule from './Neon/src/InfoModule';
 import TextView from './Neon/src/TextView';
 import TextEditMode from './Neon/src/TextEditMode';
+import { NeonManifest } from './Neon/src/Types';
 
-var view;
-init();
+declare let manifestText: string;
 
-async function init () {
+let view: NeonView;
+
+async function init (): Promise<void> {
   if (manifestText !== '') {
-    let manifest = JSON.parse(decodeURIComponent(manifestText));
+    let manifest: NeonManifest = JSON.parse(decodeURIComponent(manifestText));
     let params = {
       manifest: manifest,
       Display: DisplayPanel,
       Info: InfoModule,
       TextView: TextView,
-      TextEdit: TextEditMode
+      TextEdit: TextEditMode,
+      View: undefined,
+      NeumeEdit: undefined
     };
 
     let pageCount = manifest['mei_annotations'].length;
@@ -44,7 +48,7 @@ async function init () {
     anchor.append(validationButton);
     newDiv.append(anchor);
     div.append(newDiv);
-    validationButton.addEventListener('click', (evt) => {
+    validationButton.addEventListener('click', (_evt) => {
       view.getPageMEI(view.view.getCurrentPageURI()).then(mei => {
         return window.fetch('', {
           method: 'POST',
@@ -68,3 +72,5 @@ async function init () {
     });
   }
 }
+
+init();
