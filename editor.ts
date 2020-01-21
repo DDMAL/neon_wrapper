@@ -37,7 +37,13 @@ async function init (): Promise<void> {
     // Start Neon
     view = new NeonView(params);
     view.start();
+  }
+}
 
+async function addValidationButton() {
+    while (document.getElementsByClassName('navbar-start').length === 0) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
     let div = document.getElementsByClassName('navbar-start')[0];
     let newDiv = document.createElement('div');
     let validationButton = document.createElement('button');
@@ -70,7 +76,6 @@ async function init (): Promise<void> {
         console.error(err);
       });
     });
-  }
 }
 
-init();
+init().then(addValidationButton);
