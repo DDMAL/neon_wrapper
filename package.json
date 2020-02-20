@@ -25,12 +25,17 @@
         "url": "https://github.com/DDMAL/neon-wrapper/issues"
     },
     "scripts": {
-        "build": "./setup-verovio-rodan && yarn upgrade verovio-dev && webpack --config webpack.config.js"
+        "build": "./setup-verovio-rodan && yarn upgrade verovio-dev && webpack --config webpack.config.js && cp -R Neon/assets Neon/src/workers static/Neon && cp editor.html static/editor.html"
     },
     "devDependencies": {
+        "@types/d3": "^5.7.2",
+        "@types/elementtree": "^0.1.0",
+        "@types/pouchdb": "^6.4.0",
+        "@types/webpack": "^4.32.1",
+        "awesome-typescript-loader": "^5.2.1",
         "bulma": "^0.7.1",
         "bulma-slider": "^2.0.0",
-        "css-loader": "^0.28.11",
+        "css-loader": "^3.2.0",
         "d3": "^5.5.0",
         "elementtree": "^0.1.7",
         "file-loader": "^1.1.11",
@@ -39,8 +44,9 @@
         "pouchdb": "^7.0.0",
         "raw-loader": "^2.0.0",
         "style-loader": "^0.21.0",
+        "typescript": "^3.5.3",
         "uuid": "^3.3.2",
-        "verovio-dev": "file:Neon/src/verovio-dev",
+        "verovio-dev": "file:Neon/verovio-util/verovio-dev",
         "webpack": "^4.12.0",
         "webpack-command": "^0.2.1",
         "worker-loader": "^2.0.0"
