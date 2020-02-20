@@ -8,6 +8,7 @@ import InfoModule from './Neon/src/InfoModule';
 import TextView from './Neon/src/TextView';
 import TextEditMode from './Neon/src/TextEditMode';
 import { NeonManifest } from './Neon/src/Types';
+import { convertStaffToSb } from './Neon/src/utils/ConvertMei';
 
 declare let manifestText: string;
 
@@ -63,7 +64,7 @@ async function addValidationButton() {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            'user_input': mei
+            'user_input': convertStaffToSb(mei)
           })
         });
       }).then(response => {
