@@ -8,7 +8,7 @@ class Neon(RodanTask):
     name = 'Neon'
     author = 'Juliette Regimbal & Zoe McLennan'
     description = 'Neume Editor Online'
-    settings = {}
+    settings = {'job_queue': 'Python2'}
     enabled = True
     category = 'Pitch Correction'
     interactive = True
@@ -66,23 +66,7 @@ class Neon(RodanTask):
     def generate_manifest_text(self, inputs):
 
         manifest = {
-            '@context': [
-                'http://www.w3.org/ns/anno.jsonld',
-                {
-                    'schema': 'http://schema.org/',
-                    'title': 'schema:name',
-                    'timestamp': 'schema:dateModified',
-                    'image': {
-                        '@id': 'schema:image',
-                        '@type': '@id'
-                    },
-                    'mei_annotations': {
-                        '@id': 'Annotation',
-                        '@type': '@id',
-                        '@container': '@list'
-                    }
-                }
-            ],
+            '@context': 'https://ddmal.music.mcgill.ca/Neon/contexts/1/manifest.jsonld',
             'mei_annotations': []
         }
         manifest['title'] = 'Rodan-generated Manifest'
