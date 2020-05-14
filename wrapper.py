@@ -1,4 +1,5 @@
 from rodan.jobs.base import RodanTask
+from pytz import UTC
 from uuid import uuid4
 import datetime
 import json
@@ -25,8 +26,6 @@ class Neon(RodanTask):
             'minimum': 1,
             'maximum': 1,
             'resource_types': lambda mime: mime.endswith('png')
-            # Possible resource types include:
-            #   'resource_types': ['image/rgb+png', 'image/rgba+png', 'image/png', 'image/onebit+png', 'image/greyscale+png', 'image/grey16+png']
         },
     ]
     output_port_types = [
@@ -38,12 +37,14 @@ class Neon(RodanTask):
         },
     ]
 
+    manifestText = None
+
     def get_my_interface(self, inputs, settings):
         t = 'editor.html'
 
-        manifestText = self.generate_manifest_text(inputs)
-        print manifestText
-        c = {'manifestText': manifestText}
+        if self.manifestText is None:
+            self.manifestText = self.generate_manifest_text(inputs)
+        c = {'manifestText': self.manifestText}
 
         return (t, c)
 
@@ -87,7 +88,7 @@ class Neon(RodanTask):
         }
         manifest['title'] = 'Rodan-generated Manifest'
         manifest['@id'] = 'urn:uuid' + str(uuid4())
-        manifest['timestamp'] = datetime.datetime.utcnow().isoformat()
+        manifest['timestamp'] = datetime.datetime.now(tz=UTC).isoformat()
 
         if len(inputs['Image']) > 0:
             manifest['image'] = inputs['Image'][0]['resource_url']
