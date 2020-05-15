@@ -2,12 +2,12 @@ const path = require("path");
 const webpack = require("webpack");
 const childProcess = require('child_process');
 
-let commitHash = childProcess.execSync('(cd Neon && git rev-parse --short HEAD)').toString();
+let commitHash = childProcess.execSync('(git rev-parse --short HEAD)').toString();
 
 module.exports = {
     mode: "production",
     entry: {
-        editor: "./editor.ts",
+        editor: "../editor.ts",
     },
     output: {
         path: path.resolve(__dirname, "static", "Neon"),
