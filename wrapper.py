@@ -1,8 +1,10 @@
-from rodan.jobs.base import RodanTask
-from pytz import UTC
-from uuid import uuid4
 import datetime
 import json
+from uuid import uuid4
+
+from pytz import UTC
+
+from rodan.jobs.base import RodanTask
 
 
 class Neon(RodanTask):
