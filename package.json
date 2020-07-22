@@ -25,7 +25,7 @@
         "url": "https://github.com/DDMAL/neon-wrapper/issues"
     },
     "scripts": {
-        "build": "./setup-verovio-rodan && yarn upgrade verovio-dev && sed -i '' \"s/import maxBy from 'lodash.maxby'/import { maxBy } from 'lodash'/g\" node_modules/diva.js/source/js/{document-handler.js,grid-handler.js} && webpack --config webpack.config.js && cp -R Neon/assets Neon/src/workers static/Neon && cp editor.html static/editor.html"
+        "build": "./setup-verovio-rodan && yarn upgrade verovio-dev && ./correct-import && webpack --config webpack.config.js && cp -R Neon/assets Neon/src/workers static/Neon && cp editor.html static/editor.html"
     },
     "dependencies": {
         "d3": "^5.11.0",
