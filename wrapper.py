@@ -37,14 +37,12 @@ class Neon(RodanTask):
         },
     ]
 
-    manifestText = None
-
     def get_my_interface(self, inputs, settings):
         t = 'editor.html'
 
-        if self.manifestText is None:
-            self.manifestText = self.generate_manifest_text(inputs)
-        c = {'manifestText': self.manifestText}
+        if '@manifestText' not in settings:
+            settings['@manifestText'] = self.generate_manifest_text(inputs)
+        c = {'manifestText': settings['@manifestText']}
 
         return (t, c)
 
