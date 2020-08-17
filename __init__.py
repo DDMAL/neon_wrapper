@@ -1,2 +1,4 @@
-__version__ = "0.3.2"
-from wrapper import Neon
+__version__ = "1.0.0"
+from rodan.jobs import module_loader
+
+module_loader('rodan.jobs.neon-wrapper.wrapper')
