@@ -45,20 +45,29 @@ async function addValidationButton() {
     while (document.getElementsByClassName('navbar-start').length === 0) {
       await new Promise(resolve => setTimeout(resolve, 100));
     }
-    const div = document.getElementsByClassName('navbar-start')[0];
-    const newDiv = document.createElement('div');
-    const validationButton = document.createElement('div');
-    const anchor = document.createElement('div');
-    anchor.style.borderTop = '1px solid grey';
-    anchor.classList.add('navbar-dropdown-item');
-    anchor.classList.add('navbar-item');
-    validationButton.classList.add('button');
-    validationButton.textContent = 'Validate';
-    anchor.append(validationButton);
-    //newDiv.append(anchor);
-    //div.append(newDiv);
+
     const fileDropdown = document.querySelector('#navbar-dropdown-options');
-    fileDropdown?.appendChild(anchor);
+
+    const validationButton = document.createElement('div');
+    validationButton.classList.add('navbar-dropdown-item');
+
+    const validationButtonText = document.createElement('div');
+    validationButtonText.innerHTML = 'Submit to Rodan';
+
+    const validationButtonImg = document.createElement('img') as HTMLImageElement;
+    validationButtonImg.classList.add('external-link-icon');
+    validationButtonImg.src = 'Neon//assets/img/external-link.svg';
+
+    const dropdownDivider = document.createElement('div');
+    dropdownDivider.classList.add('dropdown-divider');
+    
+    
+    validationButton.append(validationButtonText);
+    validationButton.append(validationButtonImg);
+
+    fileDropdown?.appendChild(dropdownDivider);
+    fileDropdown?.appendChild(validationButton);
+
     validationButton.addEventListener('click', (_evt) => {
       view.getPageMEI(view.view.getCurrentPageURI()).then(mei => {
         return window.fetch('', {
