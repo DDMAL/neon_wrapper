@@ -45,16 +45,20 @@ async function addValidationButton() {
     while (document.getElementsByClassName('navbar-start').length === 0) {
       await new Promise(resolve => setTimeout(resolve, 100));
     }
-    let div = document.getElementsByClassName('navbar-start')[0];
-    let newDiv = document.createElement('div');
-    let validationButton = document.createElement('button');
-    let anchor = document.createElement('a');
+    const div = document.getElementsByClassName('navbar-start')[0];
+    const newDiv = document.createElement('div');
+    const validationButton = document.createElement('div');
+    const anchor = document.createElement('div');
+    anchor.style.borderTop = '1px solid grey';
+    anchor.classList.add('navbar-dropdown-item');
     anchor.classList.add('navbar-item');
     validationButton.classList.add('button');
     validationButton.textContent = 'Validate';
     anchor.append(validationButton);
-    newDiv.append(anchor);
-    div.append(newDiv);
+    //newDiv.append(anchor);
+    //div.append(newDiv);
+    const fileDropdown = document.querySelector('#navbar-dropdown-options');
+    fileDropdown?.appendChild(anchor);
     validationButton.addEventListener('click', (_evt) => {
       view.getPageMEI(view.view.getCurrentPageURI()).then(mei => {
         return window.fetch('', {
